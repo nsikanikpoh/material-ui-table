@@ -47,6 +47,7 @@ export default function EnhancedTableToolbar(props) {
             {numSelected} selected
           </Typography>
         ) : (
+          <>
           <TableRow>
               <TableCell align="center"></TableCell>
               <TableCell align="center"></TableCell>
@@ -60,6 +61,8 @@ export default function EnhancedTableToolbar(props) {
               <TableCell align="center"><lable>Carbs:</lable><input type="text" name="carbs" onChange={(e)=>props.searchFilter(e)}/></TableCell>
               <TableCell align="center"><lable>Price:</lable><input type="text" name="protein" onChange={(e)=>props.searchFilter(e)}/></TableCell>
         </TableRow>
+        <hr/>
+        </>
         )}
   
         {numSelected > 0 ? (

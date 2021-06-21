@@ -315,9 +315,9 @@ const searchFilter = (e) => {
                           <TableCell align="right">{row.calories}</TableCell>
                           <TableCell align="right">{formatStatus(items[Math.floor(Math.random()*items.length)])}</TableCell>
                           <TableCell align="right">{row.fat}</TableCell>
-                          <TableCell align="right"><span style={{borderRadius:'20px', width:'100px', paddingRight:'15px', 
-                           paddingLeft:'15px', paddingTop:'8px', paddingBottom:'8px',
-                          borderBlockStyle:'solid', borderColor:'#f1f5f8'}}>{row.carbs}</span></TableCell>
+                          <TableCell align="right"><span style={{borderRadius:'20px', width:'130px', paddingRight:'12px', 
+                           paddingLeft:'12px', paddingTop:'8px', paddingBottom:'8px',
+                          borderBlockStyle:'solid', borderColor:'#f1f5f8', borderWidth:'5px'}}>{row.carbs}</span></TableCell>
                           <TableCell align="right">{row.protein}</TableCell>
                           <TableCell align="right"><IconButton
                                         aria-controls="customized-menu"
@@ -356,8 +356,8 @@ const searchFilter = (e) => {
                         </TableRow>
                         <TableRow className="cver">
                           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6} className="cver">
-                            <Collapse in={open[key] && (current===key)} timeout="auto" unmountOnExit className="cver">
-                              <Box margin={4} style={{borderLeft: 'blue'}}>
+                            <Collapse in={open[key] && (current===key)} timeout="auto" unmountOnExit className="cver addborder">
+                              <Box margin={2} padding={1} border={0}>
                                 
                                 <Table size="small" aria-label="purchases" className="cver">
                                   
@@ -380,11 +380,13 @@ const searchFilter = (e) => {
                                         </TableCell>
 
                                         <TableCell align="right" className="cver">
-                                          {historyRow.amountb}
-                                        </TableCell>
+                                               {formatStatus(items[Math.floor(Math.random()*items.length)])}
+                                           </TableCell>
 
                                         <TableCell align="right" className="cver">
-                                          {historyRow.amountc}
+                                        <span style={{borderRadius:'20px', width:'130px', paddingRight:'15px', 
+                                              paddingLeft:'15px', paddingTop:'8px', paddingBottom:'8px',
+                                              borderBlockStyle:'solid', borderColor:'#ffffff', backgroundColor:'#ffffff'}}>{historyRow.amountc}</span>
                                         </TableCell>
                                         
                                       </TableRow>

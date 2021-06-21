@@ -17,7 +17,7 @@ table {
 }
 
 .table-no-highlight td {
-  background-color: transparent;
+  background-color: #ffffff !important;
 }
 
 
@@ -67,7 +67,7 @@ input{
 }
 
 .MuiTableCell-root {
-  /* background-color: #ffffff; */
+  background-color: #ffffff;
   display: table-cell;
   padding: 16px;
   font-size: 0.875rem;

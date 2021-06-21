@@ -56,7 +56,7 @@ export default function EnhancedTableToolbar(props) {
                 <input type="text" name="name" onChange={(e)=>props.searchFilter(e)}/></TableCell>
               <TableCell align="center">
               <lable>Product Type:</lable><input type="text" name="calories" onChange={(e)=>props.searchFilter(e)}/></TableCell>
-              <TableCell align="center"><lable>Status:</lable><input type="number" name="status" onChange={(e)=>props.searchFilter(e)}/></TableCell>
+              <TableCell align="center"><lable>price:</lable><input type="number" name="status" onChange={(e)=>props.searchFilter(e)}/></TableCell>
               <TableCell align="center"><lable>Brand:</lable><input type="text" name="fat" onChange={(e)=>props.searchFilter(e)}/></TableCell>
               <TableCell align="center"><lable>Carbs:</lable><input type="text" name="carbs" onChange={(e)=>props.searchFilter(e)}/></TableCell>
               <TableCell align="center"><lable>Price:</lable><input type="text" name="protein" onChange={(e)=>props.searchFilter(e)}/></TableCell>

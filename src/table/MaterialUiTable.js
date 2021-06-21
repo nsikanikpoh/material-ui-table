@@ -368,10 +368,10 @@ const searchFilter = (e) => {
                         </StyledTableRow>
                         <TableRow className="cver">
                           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6} className="cver">
-                            <Collapse in={open[key] && (current===key)} timeout="auto" unmountOnExit className="cver addborder">
+                            <Collapse in={open[key] && (current===key)} timeout="auto" unmountOnExit className="cver addborderF">
                               <Box margin={2} padding={1} border={0}>
                                 
-                                <Table size="small" aria-label="purchases" className="cver">
+                                <Table size="small" aria-label="purchases" className="cver addborder">
                                   
                                   <TableBody className="cver"> 
                                     {row.history.map((historyRow) => (

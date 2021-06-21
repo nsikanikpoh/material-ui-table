@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { makeStyles} from '@material-ui/core/styles';
+import { makeStyles, withStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -18,6 +18,44 @@ import Typography from '@material-ui/core/Typography';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InfoIcon from '@material-ui/icons/Info';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+const StyledMenu = withStyles({
+  paper: {
+    border: '1px solid #d3d4d5',
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'center',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'center',
+    }}
+    {...props}
+  />
+));
+
+const StyledMenuItem = withStyles((theme) => ({
+  root: {
+    '&:focus': {
+      backgroundColor: theme.palette.primary.main,
+      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+        color: theme.palette.common.white,
+      },
+    },
+  },
+}))(MenuItem);
 
 
 function createData(name, calories, fat, carbs, protein, price, status) {
@@ -30,8 +68,8 @@ function createData(name, calories, fat, carbs, protein, price, status) {
     protein,
     price,
     history: [
-      { date: '2020-01-05', customerId: '11091700', amount: 3 },
-      { date: '2020-01-02', customerId: 'Anonymous', amount: 1 },
+      { date: '2020-01-05', customerId: '11091700', amount: 3, amountb: 35, amountc: 36 },
+      { date: '2020-01-02', customerId: 'Anonymous', amount: 1, amountb: 33, amountc: 39 },
     ],
   };
 }
@@ -99,6 +137,16 @@ export default function MaterialUiTable() {
   const [rows, setRows] = React.useState([]);
   const [tRows, setTRows] = React.useState([]);
   const [loaded, setLoaded] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const items = [30,90,60,100,50,40,70,70];
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
 
   const API = 'http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline';
 
@@ -135,10 +183,6 @@ const searchFilter = (e) => {
     const data = tRows.filter(r => r[name] == val);
     setRows(data);
 }
-
-//   useEffect(() => {
-//     setCurrent('');
-//   }, [open]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -269,13 +313,44 @@ const searchFilter = (e) => {
                             {row.name}
                           </TableCell>
                           <TableCell align="right">{row.calories}</TableCell>
-                          <TableCell align="right">{formatStatus(row.status)}</TableCell>
+                          <TableCell align="right">{formatStatus(items[Math.floor(Math.random()*items.length)])}</TableCell>
                           <TableCell align="right">{row.fat}</TableCell>
                           <TableCell align="right"><span style={{borderRadius:'20px', width:'100px', paddingRight:'15px', 
                            paddingLeft:'15px', paddingTop:'8px', paddingBottom:'8px',
                           borderBlockStyle:'solid', borderColor:'#f1f5f8'}}>{row.carbs}</span></TableCell>
                           <TableCell align="right">{row.protein}</TableCell>
-                          <TableCell align="right"><IconButton><MoreVertIcon/></IconButton></TableCell>
+                          <TableCell align="right"><IconButton
+                                        aria-controls="customized-menu"
+                                        aria-haspopup="true"
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={handleMenuClick}><MoreVertIcon/></IconButton></TableCell>
+                          <StyledMenu
+                                  id="customized-menu"
+                                  anchorEl={anchorEl}
+                                  keepMounted
+                                  open={Boolean(anchorEl)}
+                                  onClose={handleMenuClose}
+                                >
+                                  <StyledMenuItem>
+                                    <ListItemIcon>
+                                      <InfoIcon fontSize="small" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="view" />
+                                  </StyledMenuItem>
+                                  <StyledMenuItem>
+                                    <ListItemIcon>
+                                      <EditIcon fontSize="small" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="edit" />
+                                  </StyledMenuItem>
+                                  <StyledMenuItem>
+                                    <ListItemIcon>
+                                      <DeleteIcon fontSize="small" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="delete" />
+                                  </StyledMenuItem>
+                                </StyledMenu>
 
                           
                         </TableRow>
@@ -294,6 +369,8 @@ const searchFilter = (e) => {
                                       <TableCell>Customer</TableCell>
                                       <TableCell align="right">Amount</TableCell>
                                       <TableCell align="right">Total price ($)</TableCell>
+                                      <TableCell align="right">Level</TableCell>
+                                      <TableCell align="right">Rank</TableCell>
                                     </TableRow>
                                   </TableHead>
                                   <TableBody>
@@ -313,6 +390,15 @@ const searchFilter = (e) => {
                                         <TableCell align="right">
                                           {Math.round(historyRow.amount * row.price * 100) / 100}
                                         </TableCell>
+
+                                        <TableCell align="right">
+                                          {historyRow.amountb}
+                                        </TableCell>
+
+                                        <TableCell align="right">
+                                          {historyRow.amountc}
+                                        </TableCell>
+                                        
                                       </TableRow>
                                     ))}
                                   </TableBody>

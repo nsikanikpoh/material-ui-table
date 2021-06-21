@@ -27,19 +27,25 @@ table {
 
 
 .makeStyles-highlight-6 {
-  color: #191a1b !important;
-  background-color: #f1f5f8 !important;
+  color: #0588c5 !important;
+  background-color: #ffffff !important;
 }
 
 .MuiCheckbox-colorSecondary.Mui-checked {
   color: #191a1b !important;
+  background-color: #ffffff !important;
 }
 
 .MuiTableRow-root.Mui-selected, .MuiTableRow-root.Mui-selected:hover {
-  color: #27a6e0 !important;
+  background-color: #ffffff !important;
+  color: #0588c5;
+  border-left: 5px solid #0588c5;
 }
 
-
+.MuiTableCell-body:hover {
+  color: #0588c5;
+  
+}
 table.MuiTable-root {
   border-bottom: none;
   background-color: #f1f5f8;
@@ -61,7 +67,7 @@ input{
 }
 
 .MuiTableCell-root {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   display: table-cell;
   padding: 16px;
   font-size: 0.875rem;
@@ -82,5 +88,5 @@ input{
 }
 
 .addborder{
-  border-left: 5px solid #27a6e0;
+  border-left: 5px solid #0588c5;
 }

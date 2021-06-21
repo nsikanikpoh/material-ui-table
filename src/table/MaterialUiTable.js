@@ -101,6 +101,17 @@ function stableSort(array, comparator) {
 }
 
 
+const StyledTableRow = withStyles({
+  root: {
+    background: "#ffffff",
+    color: "#1b2644",
+    "&:hover": {
+      color: "#27a6e0",
+      background: "#ffffff",
+    }
+  }
+})(TableRow);
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -282,8 +293,9 @@ const searchFilter = (e) => {
                       <>
                      
 
-                      <TableRow
-                        
+                      <StyledTableRow
+                        hover
+                        className={classes.tableRow}
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
@@ -353,7 +365,7 @@ const searchFilter = (e) => {
                                 </StyledMenu>
 
                           
-                        </TableRow>
+                        </StyledTableRow>
                         <TableRow className="cver">
                           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6} className="cver">
                             <Collapse in={open[key] && (current===key)} timeout="auto" unmountOnExit className="cver addborder">

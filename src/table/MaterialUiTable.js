@@ -357,7 +357,7 @@ const searchFilter = (e) => {
                         <TableRow className="cver">
                           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6} className="cver">
                             <Collapse in={open[key] && (current===key)} timeout="auto" unmountOnExit className="cver">
-                              <Box margin={0} style={{borderLeft: 'blue'}}>
+                              <Box margin={4} style={{borderLeft: 'blue'}}>
                                 
                                 <Table size="small" aria-label="purchases" className="cver">
                                   

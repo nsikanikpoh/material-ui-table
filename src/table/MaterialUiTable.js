@@ -149,6 +149,8 @@ export default function MaterialUiTable() {
   const [tRows, setTRows] = React.useState([]);
   const [loaded, setLoaded] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [input, setInput] = React.useState('');
+  const [typing, setTyping] = React.useState(false);
 
   const items = [30,90,60,100,50,40,70,70];
   const handleMenuClick = (event) => {
@@ -186,11 +188,21 @@ export default function MaterialUiTable() {
     } 
   }, [loaded]);
 
+
+  useEffect(() => {
+    if(typing && input === ''){
+      setRows(tRows);
+      setTyping(false);
+    } 
+  }, [input, typing]);
+
 const searchFilter = (e) => {
   e.preventDefault();
   console.log({name: e.target.name, value: e.target.value});
     const name = e.target.name;
     const val = e.target.value;
+    setTyping(true);
+    setInput(String(val));
     const data = tRows.filter(r => r[name] == val);
     setRows(data);
 }

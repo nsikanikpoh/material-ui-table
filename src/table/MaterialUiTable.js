@@ -354,48 +354,36 @@ const searchFilter = (e) => {
 
                           
                         </TableRow>
-                        <TableRow>
-                          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-                            <Collapse in={open[key] && (current===key)} timeout="auto" unmountOnExit>
+                        <TableRow className="cver">
+                          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6} className="cver">
+                            <Collapse in={open[key] && (current===key)} timeout="auto" unmountOnExit className="cver">
                               <Box margin={0} className="cver">
-                                <Typography variant="h6" gutterBottom component="div">
+                                
+                                <Table size="small" aria-label="purchases" className="cver">
                                   
-                                </Typography>
-                                <Table size="small" aria-label="purchases">
-                                  <TableHead>
-                                    <TableRow>
-                                      <TableCell></TableCell>
-                                      <TableCell>Date</TableCell>
-                                      <TableCell>Customer</TableCell>
-                                      <TableCell align="right">Amount</TableCell>
-                                      <TableCell align="right">Total price ($)</TableCell>
-                                      <TableCell align="right">Level</TableCell>
-                                      <TableCell align="right">Rank</TableCell>
-                                    </TableRow>
-                                  </TableHead>
-                                  <TableBody>
+                                  <TableBody className="cver"> 
                                     {row.history.map((historyRow) => (
-                                      <TableRow key={historyRow.date}>
-                                        <TableCell padding="checkbox">
+                                      <TableRow key={historyRow.date} className="cver">
+                                        <TableCell padding="checkbox" className="cver" className="cver">
                                           <Checkbox
                                             // checked={isItemSelected}
                                             // inputProps={{ 'aria-labelledby': labelId }}
                                           />
                                         </TableCell>
-                                        <TableCell component="th" scope="row">
+                                        <TableCell component="th" scope="row" className="cver" className="cver">
                                           {historyRow.date}
                                         </TableCell>
-                                        <TableCell>{historyRow.customerId}</TableCell>
-                                        <TableCell align="right">{historyRow.amount}</TableCell>
-                                        <TableCell align="right">
+                                        <TableCell className="cver" className="cver">{historyRow.customerId}</TableCell>
+                                        <TableCell align="right" className="cver">{historyRow.amount}</TableCell>
+                                        <TableCell align="right" className="cver">
                                           {Math.round(historyRow.amount * row.price * 100) / 100}
                                         </TableCell>
 
-                                        <TableCell align="right">
+                                        <TableCell align="right" className="cver">
                                           {historyRow.amountb}
                                         </TableCell>
 
-                                        <TableCell align="right">
+                                        <TableCell align="right" className="cver">
                                           {historyRow.amountc}
                                         </TableCell>
                                         
